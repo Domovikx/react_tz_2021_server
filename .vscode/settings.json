@@ -1,0 +1,40 @@
+{
+  "cSpell.language": "en, ru",
+  "editor.formatOnSave": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "html",
+    "typescriptreact"
+  ],
+
+  "workbench.tree.indent": 20,
+  "editor.minimap.enabled": false,
+  "editor.wordWrap": "on",
+
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+
+  "explorer.compactFolders": false,
+  "explorer.confirmDelete": true,
+  "explorer.confirmDragAndDrop": true,
+
+  "path-autocomplete.extensionOnImport": true,
+
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "cSpell.enabledLanguageIds": [
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "markdown",
+    "yml",
+    "vue"
+  ],
+  "cSpell.showStatus": true,
+
+  "cSpell.words": []
+}

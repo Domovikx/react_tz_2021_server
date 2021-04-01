@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "commonjs",
+    "sourceMap": false,
+
+    "lib": ["esnext", "dom"],
+
+    "noImplicitAny": true,
+    "noResolve": false,
+
+    "outDir": "./build",
+    "rootDir": "./src",
+    "removeComments": true,
+
+    "noEmitOnError": true,
+    "strict": true,
+
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+
+    "baseUrl": ".",
+    "allowJs": true,
+
+    "allowSyntheticDefaultImports": true,
+
+    "moduleResolution": "node",
+
+    "isolatedModules": true,
+    "newLine": "CRLF",
+    "pretty": true,
+
+    "resolveJsonModule": true,
+
+    "watch": true
+  },
+
+  "include": ["src", "src/types/*"],
+  "exclude": ["src/**/*.spec.ts", "node_modules"]
+}

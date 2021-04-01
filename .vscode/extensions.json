@@ -1,0 +1,22 @@
+{
+  "recommendations": [
+    "streetsidesoftware.code-spell-checker",
+    "streetsidesoftware.code-spell-checker-russian",
+    "mhutchie.git-graph",
+    "eamodio.gitlens",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "xabikos.javascriptsnippets",
+    "abusaidm.html-snippets",
+    "formulahendry.auto-close-tag",
+    "formulahendry.auto-complete-tag",
+    "formulahendry.auto-rename-tag",
+    "chrisvltn.log-wrapper-for-vscode",
+    "ionutvmi.path-autocomplete",
+    "coenraads.bracket-pair-colorizer",
+    "naumovs.color-highlight",
+    "shd101wyy.markdown-preview-enhanced",
+    "miclo.sort-typescript-imports",
+    "sgryjp.vscode-stable-sort"
+  ]
+}
