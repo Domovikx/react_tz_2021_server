@@ -6,9 +6,9 @@ const tasksRoute = express.Router();
 const controller = new TasksController();
 
 tasksRoute.get(API.ALL, controller.tasksGetAll);
-tasksRoute.get(API.CREATE, controller.taskCreate);
+tasksRoute.post(API.CREATE, controller.taskCreate);
 tasksRoute.get(API.ID, controller.taskGetById);
-tasksRoute.get(API.ID, controller.taskUpdate);
-tasksRoute.get(API.ID, controller.taskRemove);
+tasksRoute.patch(API.ID, controller.taskUpdate);
+tasksRoute.delete(API.ID, controller.taskRemove);
 
 export { tasksRoute };

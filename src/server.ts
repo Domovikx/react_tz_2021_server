@@ -8,6 +8,7 @@ import { MONGO_URI } from './config/config';
 
 import { tasksRoute } from './routes/tasks.route';
 import { API } from './types/api.types';
+import { usersRoute } from './routes/users.route';
 
 const server = express();
 
@@ -38,7 +39,7 @@ server.use(cors());
 
 // routes
 server.use(API.TASKS, tasksRoute);
-server.use(API.USERS, tasksRoute);
+server.use(API.USERS, usersRoute);
 
 const httpServer = require('http').Server(server);
 
