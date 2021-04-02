@@ -1,10 +1,9 @@
 import express from 'express';
-import path from 'path';
 import cors from 'cors';
 import morgan from 'morgan';
+import swaggerUi from 'swagger-ui-express';
 
 import { connect } from 'mongoose';
-import { Request, Response } from 'express';
 import { MONGO_URI } from './config/config';
 
 import { COLLECTION } from './types/collection.types';
@@ -20,11 +19,13 @@ connect(MONGO_URI, {
   .then(() => console.info('MongoDB connected - success.'))
   .catch((error) => console.error(error));
 
-// Server check - (GET) http://localhost:3000
-server.get('/', (req: Request, res: Response) => {
-  res.status(200);
-  res.sendFile(path.join(__dirname, 'views', 'index.html'));
-});
+// Extended: https://swagger.io/specification/#infoObject
+try {
+  const swaggerDocument = require('./swagger.json');
+  server.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+} catch (err) {
+  console.error('Unable to read swagger.json', err);
+}
 
 // morgan
 server.use(morgan('dev'));

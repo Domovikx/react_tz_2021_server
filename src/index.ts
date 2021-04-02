@@ -6,9 +6,5 @@ import { httpServer } from './server';
 const port = process.env.PORT || PORT_SERVER;
 
 httpServer.listen(port, () => {
-  console.log(
-    colors.bold.yellow(
-      `\nhttp://localhost:${port} - Server started - success.\n`,
-    ),
-  );
+  console.log(colors.bold.yellow(`\nhttp://localhost:${port} - api-docs\n`));
 });
