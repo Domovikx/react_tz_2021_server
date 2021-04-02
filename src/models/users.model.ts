@@ -3,7 +3,7 @@ import { COLLECTION } from '../types/collection.types';
 
 const Schema = mongoose.Schema;
 
-export const TasksModel = mongoose.model(
+export const UsersModel = mongoose.model(
   COLLECTION.tasks,
   new Schema({
     username: { type: String, required: true },

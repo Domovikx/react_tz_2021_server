@@ -6,8 +6,8 @@ import swaggerUi from 'swagger-ui-express';
 import { connect } from 'mongoose';
 import { MONGO_URI } from './config/config';
 
-import { COLLECTION } from './types/collection.types';
 import { tasksRoute } from './routes/tasks.route';
+import { API } from './types/api.types';
 
 const server = express();
 
@@ -19,7 +19,6 @@ connect(MONGO_URI, {
   .then(() => console.info('MongoDB connected - success.'))
   .catch((error) => console.error(error));
 
-// Extended: https://swagger.io/specification/#infoObject
 try {
   const swaggerDocument = require('./swagger.json');
   server.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
@@ -38,7 +37,8 @@ server.use(express.json());
 server.use(cors());
 
 // routes
-server.use(`/api/${COLLECTION.tasks}`, tasksRoute);
+server.use(API.TASKS, tasksRoute);
+server.use(API.USERS, tasksRoute);
 
 const httpServer = require('http').Server(server);
 

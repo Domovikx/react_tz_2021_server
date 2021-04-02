@@ -3,13 +3,39 @@
     "title": "rest-server"
   },
 
+  "definitions": {
+    "ITask": {
+      "type": "object",
+      "properties": {
+        "_id": { "type": "string", "required": true },
+        "username": { "type": "string", "required": true },
+        "email": { "type": "string", "required": true },
+        "text": { "type": "string", "required": true },
+        "status": { "type": "number", "required": true }
+      }
+    },
+    "IUser": {
+      "type": "object",
+      "properties": {
+        "_id": { "type": "string", "required": true },
+        "username": { "type": "string", "required": true },
+        "email": { "type": "string", "required": true }
+      }
+    }
+  },
+
   "paths": {
     "/api/tasks/all": {
       "get": {
-        "description": "Получение всех тасок",
+        "operationId": "GetAllTasks",
+        "produces": ["application/json"],
+        "description": "GetAllTasks",
         "responses": {
           "200": {
-            "schema": {}
+            "schema": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/ITask" }
+            }
           }
         }
       },
@@ -18,9 +44,7 @@
         "operationId": "Create",
         "produces": ["application/json"],
         "responses": {
-          "204": {
-            "description": "No content"
-          }
+          "204": { "description": "No content" }
         },
         "security": [],
         "parameters": [
@@ -28,11 +52,7 @@
             "in": "body",
             "name": "body",
             "schema": {
-              "properties": {
-                "description": {
-                  "type": "string"
-                }
-              },
+              "properties": { "description": { "type": "string" } },
               "title": "CreateBody",
               "type": "object",
               "required": ["description"]
@@ -47,9 +67,7 @@
         "operationId": "Update",
         "produces": ["application/json"],
         "responses": {
-          "204": {
-            "description": "No content"
-          }
+          "204": { "description": "No content" }
         },
         "security": [],
         "parameters": [
@@ -80,9 +98,7 @@
         "operationId": "Remove",
         "produces": ["application/json"],
         "responses": {
-          "204": {
-            "description": "No content"
-          }
+          "204": { "description": "No content" }
         },
         "security": [],
         "parameters": [

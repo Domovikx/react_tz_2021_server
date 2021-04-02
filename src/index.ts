@@ -6,5 +6,7 @@ import { httpServer } from './server';
 const port = process.env.PORT || PORT_SERVER;
 
 httpServer.listen(port, () => {
-  console.log(colors.bold.yellow(`\nhttp://localhost:${port} - api-docs\n`));
+  console.log(
+    colors.bold.yellow(`\nhttp://localhost:${port}/swagger - api-docs\n`),
+  );
 });
