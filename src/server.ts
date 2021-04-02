@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import swaggerUi from 'swagger-ui-express';
+import passport from 'passport';
 
 import { connect } from 'mongoose';
 import { MONGO_URI } from './config/config';
@@ -27,10 +28,13 @@ try {
   console.error('Unable to read swagger.json', err);
 }
 
+server.use(passport.initialize());
+require('./middleware/passport')(passport);
+
 // morgan
 server.use(morgan('dev'));
 
-// body-parser
+// parser
 server.use(express.urlencoded({ extended: true }));
 server.use(express.json());
 
