@@ -3,7 +3,7 @@ import passport from 'passport';
 import { API } from '../types/api.types';
 import { TasksController } from '../controllers/tasks.controller';
 
-const tasksRoute = express.Router();
+export const tasksRoute = express.Router();
 const controller = new TasksController();
 
 tasksRoute.get(API.ALL, controller.tasksGetAll);
@@ -15,5 +15,3 @@ tasksRoute.delete(
   passport.authenticate('jwt', { session: false }),
   controller.taskRemove,
 );
-
-export { tasksRoute };

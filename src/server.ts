@@ -21,15 +21,6 @@ connect(MONGO_URI, {
   .then(() => console.info('MongoDB connected - success.'))
   .catch((error) => console.error(error));
 
-// swagger
-// TODO: Optional swagger connection, for documentation
-try {
-  const swaggerDocument = require('./swagger.json');
-  server.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-} catch (err) {
-  console.error('Unable to read swagger.json', err);
-}
-
 // passport
 server.use(passport.initialize());
 passportMiddleware(passport);
@@ -47,6 +38,15 @@ server.use(cors());
 // routes
 server.use(API.TASKS, tasksRoute);
 server.use(API.USERS, usersRoute);
+
+// swagger
+// TODO: Optional swagger connection, for documentation
+try {
+  const swaggerDocument = require('./swagger.json');
+  server.use(API.ROOT, swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+} catch (err) {
+  console.error('Unable to read swagger.json', err);
+}
 
 const httpServer = new http.Server(server);
 

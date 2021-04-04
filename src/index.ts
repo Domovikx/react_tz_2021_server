@@ -6,6 +6,6 @@ const port = process.env.PORT || PORT_SERVER;
 
 httpServer.listen(port, () => {
   console.log(
-    colors.bold.yellow(`\nhttp://localhost:${port}/swagger - api-docs\n`),
+    colors.bold.yellow(`\nhttp://localhost:${port} - rest api swagger docs\n`),
   );
 });
