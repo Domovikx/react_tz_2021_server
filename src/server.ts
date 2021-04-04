@@ -39,8 +39,6 @@ server.use(cors());
 // routes
 server.use(API.TASKS, tasksRoute);
 server.use(API.USERS, usersRoute);
-
-// swagger
 server.use(API.ROOT, swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const httpServer = new http.Server(server);

@@ -2,7 +2,7 @@
   "info": {
     "title": "react_tz_2021_server",
     "version": "1.0.0",
-    "description": "This is a sample server REST API server.  You can find out more about GitHub at [github.com/Domovikx/react_tz_2021_server](https://github.com/Domovikx/react_tz_2021_server)"
+    "description": "This is a sample server REST API server.  You can find out more about it at GitHub [github.com/Domovikx/react_tz_2021_server](https://github.com/Domovikx/react_tz_2021_server)"
   },
 
   "definitions": {
