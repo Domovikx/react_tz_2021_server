@@ -1,6 +1,6 @@
 import express from 'express';
-import { UsersController } from '../../src/controllers/users.controller';
-import { API } from '../../src/types/api.types';
+import { API } from '../types/api.types';
+import { UsersController } from '../controllers/users.controller';
 
 const usersRoute = express.Router();
 const controller = new UsersController();

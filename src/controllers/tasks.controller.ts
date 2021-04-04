@@ -1,6 +1,6 @@
+import { errorHandler } from '../utils/errorHandler';
 import { Request, Response } from 'express';
 import { TasksModel } from '../models/tasks.model';
-import { errorHandler } from '../utils/errorHandler';
 
 export class TasksController {
   async tasksGetAll(req: Request, res: Response) {
@@ -12,7 +12,7 @@ export class TasksController {
     }
   }
 
-  async taskCreate(req: any, res: Response) {
+  async taskCreate(req: Request, res: Response) {
     try {
       const player = await TasksModel.findByIdAndUpdate(
         { _id: req.body.id },

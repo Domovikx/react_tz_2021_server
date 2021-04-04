@@ -1,12 +1,17 @@
-import mongoose from 'mongoose';
 import { COLLECTION } from '../types/collection.types';
+import { Document, model, Model, Schema } from 'mongoose';
 
-const Schema = mongoose.Schema;
+export interface IUsersModel extends Document {
+  email: string;
+  password: string;
+}
 
-export const UsersModel = mongoose.model(
+const UserSchema: Schema = new Schema({
+  email: { type: String, required: true },
+  password: { type: String, required: true },
+});
+
+export const UsersModel: Model<IUsersModel> = model(
   COLLECTION.users,
-  new Schema({
-    email: { type: String, required: true },
-    password: { type: String, required: true },
-  }),
+  UserSchema,
 );

@@ -1,10 +1,9 @@
 import bcryptjs from 'bcryptjs';
 import jsonwebtoken from 'jsonwebtoken';
-
-import { Request, Response } from 'express';
-import { UsersModel } from '../../src/models/users.model';
 import { errorHandler } from '../utils/errorHandler';
-import { JWT_KEY } from '../../src/config/config';
+import { IUsersModel, UsersModel } from '../models/users.model';
+import { JWT_KEY } from '../config/config';
+import { Request, Response } from 'express';
 
 export class UsersController {
   async usersRegister(req: Request, res: Response) {
@@ -34,7 +33,7 @@ export class UsersController {
 
   async usersLogin(req: Request, res: Response) {
     try {
-      const candidate: any = await UsersModel.findOne({
+      const candidate: IUsersModel | null = await UsersModel.findOne({
         email: req.body.email,
       });
 

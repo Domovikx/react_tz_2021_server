@@ -1,14 +1,13 @@
-import express from 'express';
 import cors from 'cors';
+import express from 'express';
 import morgan from 'morgan';
-import swaggerUi from 'swagger-ui-express';
 import passport from 'passport';
-
+import swaggerUi from 'swagger-ui-express';
+import { API } from './types/api.types';
 import { connect } from 'mongoose';
 import { MONGO_URI } from './config/config';
-
+import { passportMiddleware } from './middleware/passport.middleware';
 import { tasksRoute } from './routes/tasks.route';
-import { API } from './types/api.types';
 import { usersRoute } from './routes/users.route';
 
 const server = express();
@@ -21,6 +20,7 @@ connect(MONGO_URI, {
   .then(() => console.info('MongoDB connected - success.'))
   .catch((error) => console.error(error));
 
+// swagger
 try {
   const swaggerDocument = require('./swagger.json');
   server.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
@@ -28,8 +28,9 @@ try {
   console.error('Unable to read swagger.json', err);
 }
 
+// passport
 server.use(passport.initialize());
-require('./middleware/passport')(passport);
+passportMiddleware(passport);
 
 // morgan
 server.use(morgan('dev'));

@@ -1,6 +1,7 @@
 import passportJWT from 'passport-jwt';
-import { JWT_KEY } from '../../src/config/config';
-import { UsersModel } from '../../src/models/users.model';
+import { JWT_KEY } from '../config/config';
+import { PassportStatic } from 'passport';
+import { UsersModel } from '../models/users.model';
 
 const JwtStrategy = passportJWT.Strategy;
 const ExtractJwt = passportJWT.ExtractJwt;
@@ -10,7 +11,7 @@ const options = {
   secretOrKey: JWT_KEY,
 };
 
-module.exports = (passport: any) => {
+export const passportMiddleware = (passport: PassportStatic) => {
   passport.use(
     new JwtStrategy(options, async (payload, done) => {
       try {
