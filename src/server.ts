@@ -43,7 +43,7 @@ server.use(API.USERS, usersRoute);
 // TODO: Optional swagger connection, for documentation
 try {
   const swaggerDocument = require('./swagger.json');
-  server.use(API.ROOT, swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+  server.use(API.API, swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 } catch (err) {
   console.error('Unable to read swagger.json', err);
 }

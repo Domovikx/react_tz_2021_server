@@ -1,5 +1,6 @@
 export enum API {
   ROOT = '/',
+  API = '/api',
   ALL = '/all',
   ID = '/:id',
   CREATE = '/create',
