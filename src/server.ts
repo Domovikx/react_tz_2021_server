@@ -1,14 +1,15 @@
-import express from 'express';
-import path from 'path';
 import cors from 'cors';
+import express from 'express';
+import http from 'http';
 import morgan from 'morgan';
-
+import passport from 'passport';
+import swaggerUi from 'swagger-ui-express';
+import { API } from './types/api.types';
 import { connect } from 'mongoose';
-import { Request, Response } from 'express';
 import { MONGO_URI } from './config/config';
-
-import { COLLECTION } from './types/collection.types';
+import { passportMiddleware } from './middleware/passport.middleware';
 import { tasksRoute } from './routes/tasks.route';
+import { usersRoute } from './routes/users.route';
 
 const server = express();
 
@@ -20,16 +21,23 @@ connect(MONGO_URI, {
   .then(() => console.info('MongoDB connected - success.'))
   .catch((error) => console.error(error));
 
-// Server check - (GET) http://localhost:3000
-server.get('/', (req: Request, res: Response) => {
-  res.status(200);
-  res.sendFile(path.join(__dirname, 'views', 'index.html'));
-});
+// swagger
+// TODO: Optional swagger connection, for documentation
+try {
+  const swaggerDocument = require('./swagger.json');
+  server.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+} catch (err) {
+  console.error('Unable to read swagger.json', err);
+}
+
+// passport
+server.use(passport.initialize());
+passportMiddleware(passport);
 
 // morgan
 server.use(morgan('dev'));
 
-// body-parser
+// parser
 server.use(express.urlencoded({ extended: true }));
 server.use(express.json());
 
@@ -37,8 +45,9 @@ server.use(express.json());
 server.use(cors());
 
 // routes
-server.use(`/api/${COLLECTION.tasks}`, tasksRoute);
+server.use(API.TASKS, tasksRoute);
+server.use(API.USERS, usersRoute);
 
-const httpServer = require('http').Server(server);
+const httpServer = new http.Server(server);
 
 export { httpServer };

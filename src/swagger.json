@@ -1,0 +1,48 @@
+{
+  "info": {
+    "title": "rest-server"
+  },
+
+  "definitions": {
+    "ITasksModel": {
+      "type": "object",
+      "properties": {
+        "_id": { "type": "string" },
+        "username": { "type": "string", "required": true },
+        "email": { "type": "string", "required": true },
+        "text": { "type": "string", "required": true },
+        "status": { "type": "number", "required": true }
+      }
+    },
+    "IUsersModel": {
+      "type": "object",
+      "properties": {
+        "_id": { "type": "string" },
+        "email": { "type": "string", "required": true },
+        "password": { "type": "string", "required": true }
+      }
+    }
+  },
+
+  "paths": {
+    "/api/tasks/all": {
+      "get": {
+        "operationId": "For example GetAllTasks",
+        "produces": ["application/json"],
+        "description": "For example GetAllTasks",
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/ITasksModel" }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "produces": ["application/json"],
+  "swagger": "2.0",
+  "securityDefinitions": {}
+}

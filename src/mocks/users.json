@@ -1,0 +1,16 @@
+[
+  {
+    "_id": { "$oid": "60678fdbfb88883de0ce5b47" },
+    "email": "asdasdasd2@mail.com",
+    "password": "$2a$10$yVZ2U1EZ3CiqEF/xoc4GxuH2kpnEvEoa1EURk4fIpqIAeeUCP0AQG",
+    "__v": { "$numberInt": "0" }
+  },
+  {
+    "task": {
+      "username": "username1",
+      "email": "email",
+      "text": "text",
+      "status": 1
+    }
+  }
+]

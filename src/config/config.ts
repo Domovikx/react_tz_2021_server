@@ -7,3 +7,5 @@ export const MONGO_URI = `mongodb+srv://${MONGO_USER_NAME}:${MONGO_PASSWORD}@${M
 
 export const PORT_SERVER = 3000;
 export const URL_SERVER = `http://localhost:${PORT_SERVER}`;
+
+export const JWT_KEY = '5VNEgYKQlX';

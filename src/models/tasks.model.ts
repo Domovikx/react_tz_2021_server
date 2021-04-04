@@ -1,28 +1,21 @@
-import mongoose from 'mongoose';
 import { COLLECTION } from '../types/collection.types';
+import { Document, model, Model, Schema } from 'mongoose';
 
-const Schema = mongoose.Schema;
+export interface ITasksModel extends Document {
+  username: string;
+  email: string;
+  text: string;
+  status: number;
+}
 
-export const TasksModel = mongoose.model(
+const TasksSchema: Schema = new Schema({
+  username: { type: String, required: true },
+  email: { type: String, required: true },
+  text: { type: String, required: true },
+  status: { type: Number, required: true },
+});
+
+export const TasksModel: Model<ITasksModel> = model(
   COLLECTION.tasks,
-  new Schema({
-    username: {
-      type: String,
-      required: true,
-    },
-    email: {
-      type: String,
-      required: true,
-    },
-    text: {
-      type: String,
-      required: true,
-    },
-    status: {
-      type: Number,
-      required: true,
-    },
-  }),
+  TasksSchema,
 );
-
-// TODO: https://uxcandy.com/~shapoval/test-task-backend/docs/v2.html

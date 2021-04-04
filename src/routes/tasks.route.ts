@@ -1,11 +1,19 @@
 import express from 'express';
-
-import { RootController } from '../controllers/root.controller';
-import { API_TASKS } from '../types/tasks.types';
+import passport from 'passport';
+import { API } from '../types/api.types';
+import { TasksController } from '../controllers/tasks.controller';
 
 const tasksRoute = express.Router();
-const controller = new RootController();
+const controller = new TasksController();
 
-tasksRoute.get(API_TASKS.all, controller.getAll);
+tasksRoute.get(API.ALL, controller.tasksGetAll);
+tasksRoute.post(API.CREATE, controller.taskCreate);
+tasksRoute.get(API.ID, controller.taskGetById);
+tasksRoute.patch(API.ID, controller.taskUpdate);
+tasksRoute.delete(
+  API.ID,
+  passport.authenticate('jwt', { session: false }),
+  controller.taskRemove,
+);
 
 export { tasksRoute };

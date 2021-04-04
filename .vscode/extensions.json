@@ -17,6 +17,7 @@
     "naumovs.color-highlight",
     "shd101wyy.markdown-preview-enhanced",
     "miclo.sort-typescript-imports",
-    "sgryjp.vscode-stable-sort"
+    "sgryjp.vscode-stable-sort",
+    "natqe.reload"
   ]
 }
