@@ -1,6 +1,8 @@
 {
   "info": {
-    "title": "rest-server"
+    "title": "react_tz_2021_server",
+    "version": "1.0.0",
+    "description": "This is a sample server REST API server.  You can find out more about GitHub at [github.com/Domovikx/react_tz_2021_server](https://github.com/Domovikx/react_tz_2021_server)"
   },
 
   "definitions": {
@@ -27,9 +29,9 @@
   "paths": {
     "/api/tasks/all": {
       "get": {
-        "operationId": "For example GetAllTasks",
+        "operationId": "tasksGetAll",
         "produces": ["application/json"],
-        "description": "For example GetAllTasks",
+        "summary": "Get All Tasks",
         "responses": {
           "200": {
             "schema": {
