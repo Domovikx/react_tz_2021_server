@@ -5,13 +5,14 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "nodemon -x ts-node src/index.ts",
-    "build": "webpack --mode=production"
+    "start": "ts-node src/index.ts",
+    "dev": "nodemon -x ts-node src/backend/server.ts"
   },
   "browserslist": "> 0.25%, not dead",
   "devDependencies": {},
   "engines": {
-    "node": "14.5.0"
+    "node": "^14.x",
+    "yarn": "1.x"
   },
   "dependencies": {
     "@babel/preset-env": "^7.4.5",
