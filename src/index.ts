@@ -1,7 +1,6 @@
 import colors from 'colors';
-
-import { PORT_SERVER } from './config/config';
 import { httpServer } from './server';
+import { PORT_SERVER } from './config/config';
 
 const port = process.env.PORT || PORT_SERVER;
 

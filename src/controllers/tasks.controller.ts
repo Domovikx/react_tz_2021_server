@@ -13,12 +13,10 @@ export class TasksController {
   }
 
   async taskCreate(req: Request, res: Response) {
+    const task = new TasksModel(req.body.task);
     try {
-      const player = await TasksModel.findByIdAndUpdate(
-        { _id: req.body.id },
-        req.body.player,
-      );
-      res.status(200).json(player);
+      await task.save();
+      res.status(201).json(task);
     } catch (err) {
       errorHandler(res, err);
     }
@@ -26,18 +24,20 @@ export class TasksController {
 
   async taskGetById(req: Request, res: Response) {
     try {
-      const player = await TasksModel.findById(req.params.id);
-      res.status(200).json(player);
+      const task = await TasksModel.findById(req.params.id);
+      res.status(200).json(task);
     } catch (err) {
       errorHandler(res, err);
     }
   }
 
   async taskUpdate(req: Request, res: Response) {
-    const category = new TasksModel(req.body.player);
+    const { id, task } = req.body;
     try {
-      await category.save();
-      res.status(201).json(category);
+      const taskUpdated = await TasksModel.findByIdAndUpdate(id, task, {
+        new: true,
+      });
+      res.status(200).json(taskUpdated);
     } catch (err) {
       errorHandler(res, err);
     }

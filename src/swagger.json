@@ -4,22 +4,22 @@
   },
 
   "definitions": {
-    "ITask": {
+    "ITasksModel": {
       "type": "object",
       "properties": {
-        "_id": { "type": "string", "required": true },
+        "_id": { "type": "string" },
         "username": { "type": "string", "required": true },
         "email": { "type": "string", "required": true },
         "text": { "type": "string", "required": true },
         "status": { "type": "number", "required": true }
       }
     },
-    "IUser": {
+    "IUsersModel": {
       "type": "object",
       "properties": {
-        "_id": { "type": "string", "required": true },
-        "username": { "type": "string", "required": true },
-        "email": { "type": "string", "required": true }
+        "_id": { "type": "string" },
+        "email": { "type": "string", "required": true },
+        "password": { "type": "string", "required": true }
       }
     }
   },
@@ -27,88 +27,17 @@
   "paths": {
     "/api/tasks/all": {
       "get": {
-        "operationId": "GetAllTasks",
+        "operationId": "For example GetAllTasks",
         "produces": ["application/json"],
-        "description": "GetAllTasks",
+        "description": "For example GetAllTasks",
         "responses": {
           "200": {
             "schema": {
               "type": "array",
-              "items": { "$ref": "#/definitions/ITask" }
+              "items": { "$ref": "#/definitions/ITasksModel" }
             }
           }
         }
-      },
-
-      "post": {
-        "operationId": "Create",
-        "produces": ["application/json"],
-        "responses": {
-          "204": { "description": "No content" }
-        },
-        "security": [],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "properties": { "description": { "type": "string" } },
-              "title": "CreateBody",
-              "type": "object",
-              "required": ["description"]
-            }
-          }
-        ]
-      }
-    },
-
-    "/api/users": {
-      "put": {
-        "operationId": "Update",
-        "produces": ["application/json"],
-        "responses": {
-          "204": { "description": "No content" }
-        },
-        "security": [],
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "properties": {
-                "description": {
-                  "type": "string"
-                }
-              },
-              "title": "UpdateBody",
-              "type": "object",
-              "required": ["description"]
-            }
-          }
-        ]
-      },
-
-      "delete": {
-        "operationId": "Remove",
-        "produces": ["application/json"],
-        "responses": {
-          "204": { "description": "No content" }
-        },
-        "security": [],
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "type": "string"
-          }
-        ]
       }
     }
   },

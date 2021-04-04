@@ -1,5 +1,6 @@
 import cors from 'cors';
 import express from 'express';
+import http from 'http';
 import morgan from 'morgan';
 import passport from 'passport';
 import swaggerUi from 'swagger-ui-express';
@@ -21,6 +22,7 @@ connect(MONGO_URI, {
   .catch((error) => console.error(error));
 
 // swagger
+// TODO: Optional swagger connection, for documentation
 try {
   const swaggerDocument = require('./swagger.json');
   server.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
@@ -46,6 +48,6 @@ server.use(cors());
 server.use(API.TASKS, tasksRoute);
 server.use(API.USERS, usersRoute);
 
-const httpServer = require('http').Server(server);
+const httpServer = new http.Server(server);
 
 export { httpServer };

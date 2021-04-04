@@ -6,11 +6,7 @@ import { TasksController } from '../controllers/tasks.controller';
 const tasksRoute = express.Router();
 const controller = new TasksController();
 
-tasksRoute.get(
-  API.ALL,
-  passport.authenticate('jwt', { session: false }),
-  controller.tasksGetAll,
-);
+tasksRoute.get(API.ALL, controller.tasksGetAll);
 tasksRoute.post(API.CREATE, controller.taskCreate);
 tasksRoute.get(API.ID, controller.taskGetById);
 tasksRoute.patch(API.ID, controller.taskUpdate);
